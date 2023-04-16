@@ -1,0 +1,5 @@
+<%- include('includes/_header') %>
+    <form class="form" action="/todos/edit/<%= todo.id %>?_method=PUT" method="POST">
+        <%-  include('includes/_form_fields') %>
+    </form>
+<%- include('includes/_footer') %>

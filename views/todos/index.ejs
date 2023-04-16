@@ -1,0 +1,74 @@
+<%- include('includes/_header') %>
+    <% if (todos.length) {%>
+    <div class="all">
+
+        <form action="/todos/delete-all?_method=DELETE" method="POST" class="delete-all">
+            <button type="submit">
+                <span>
+                    <svg class="icon icon-delete-all">
+                        <use xlink:href="/icons/solid.svg#trash-can"></use>
+                    </svg>
+                </span>
+                <span>
+                    Delete All
+                </span>
+            </button>
+        </form>
+        <form action="/todos/delete-selected?_method=DELETE" method="POST" class="delete-selected">
+            <button type="submit">
+                <span>
+                    <svg class="icon icon-delete-selected">
+                        <use xlink:href="/icons/solid.svg#trash-can"></use>
+                    </svg>
+                </span>
+                <span>
+                    Delete Selected
+                </span>
+            </button>
+        </form>
+    </div>
+    <% } %>
+    <% if (todos.length) { %>
+        <main class="todos">
+        <% todos.forEach(todo => { %>
+            <div class="todo">
+                <input type="hidden" name="id" value="<%= todo.id %>" class="hidden">
+                <h3 class="todo_title"><%= todo.title %></h3>
+                <p class="todo_desc"><%= todo.description %></p>
+                <div class="todo_actions">
+                    <div class="info">
+                        <svg class="icon icon-info">
+                            <use xlink:href="/icons/solid.svg#circle-info">
+                            </use>
+                        </svg>
+                        <div class="info-dialog">
+                            <p>Created at: <%= todo.createdAt %></p>
+                            <p>Updated at: <%= todo.updatedAt %></p>
+                        </div>
+
+                    </div>
+                    <a href="/todos/edit/<%= todo.id %>" class="todo_edit">
+                        <svg class="icon icon-edit">
+                            <use xlink:href="/icons/solid.svg#pen"></use>
+                        </svg>
+                    </a>
+                    <form action="/todos/delete/<%= todo.id %>?_method=DELETE" method="POST">
+                        <button type="submit" class="delete-btn">
+                            <svg class="icon icon-delete">
+                                <use xlink:href="/icons/solid.svg#trash-can"></use>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        <% }) %>
+        </main>
+    <% } else { %>
+        <div class="no-todos">
+        <p class="none">
+            Oops! No todos found. Add one to see.
+        </p>
+        <a href="/todos/new">Add a new todo</a>
+        </div>
+    <% } %>
+<%- include('includes/_footer') %>

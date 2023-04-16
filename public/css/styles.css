@@ -1,0 +1,250 @@
+:root {
+    --color-primary: #51105e;
+    --color-text: #fefefe;
+    --primary-border: 1px solid var(--color-primary);
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 114rem;
+    margin: 0 auto;
+    border-bottom: 1px solid #d3d3d3;
+}
+
+.nav_title {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: var(--color-primary);
+}
+
+.nav_btns {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav_all, .nav_new {
+    text-decoration: none;
+    font-size: 1.4rem;
+    padding: 1rem 2rem;
+    border-radius: .5rem;
+    border: var(--primary-border);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+}
+
+.nav_all {
+    color: var(--color-primary);
+}
+
+.nav_new {
+    background-color: var(--color-primary);
+    color: var(--color-text);
+   display: flex;
+   align-items: center;
+   gap: 1rem;
+}
+
+.no-todos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+    height: 80vh;
+}
+
+.none {
+    font-size: 2.5rem;
+    font-weight: medium;
+    display: block;
+}
+
+.no-todos a {
+    display: block;
+    font-size: 2rem;
+    color: var(--color-primary);
+    text-decoration: none;
+    border-bottom: var(--primary-border);
+}
+
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    max-width: 60rem;
+    margin: 0 auto;
+    align-items: flex-start;
+    justify-content: center;
+    height: 80vh;
+}
+
+#todo, #description {
+    padding: 1rem;
+    font-family: inherit;
+    font-size: 1.8rem;
+    width: 60rem;
+    border: 2px solid var(--color-primary);
+    border-radius: .5rem;
+    color: var(--color-primary);
+}
+
+.form button, .delete-all button, .delete-selected button {
+    background-color: var(--color-primary);
+    padding: 1rem 2rem;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    color: var(--color-text);
+    border: none;
+    border-radius: .5rem;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+
+.todos {
+    max-width: 114rem;
+    margin: 5rem auto;
+    gap: 3rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+
+}
+
+.todo {
+    background-color: #fbfbfb;
+    border: 1px solid #cdcccc;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.todo_title {
+    font-size: 2rem;
+
+}
+
+.todo_desc {
+    font-size: 1.4rem;
+    margin-bottom: auto;
+}
+
+.todo_actions {
+    display: flex;
+    gap: 1.5rem;
+    border-top: 1px solid #cdcccc;
+    padding-top: 1.5rem;
+}
+
+.icon {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.icon-new {
+    fill: #fff;
+}
+
+.icon-delete {
+    fill: red;
+}
+
+.icon-edit {
+    fill: #54bad9;
+}
+
+.icon-btn, .icon-delete-all, .icon-delete-selected {
+    fill: #fff;
+    width: 2rem;
+    height: 2rem;
+}
+
+.delete-btn {
+    border: none;
+    background-color: transparent;
+}
+
+.all {
+    max-width: 114rem;
+    margin: 2rem auto;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.selected {
+    border: 3px solid var(--color-primary);
+    background-color: rgba(81, 16, 94, .1);
+}
+
+.delete-selected {
+    visibility: hidden;
+}
+
+.delete-selected button {
+    background-color: #54bad9;
+}
+
+.info {
+    position: relative;
+}
+
+.info-dialog {
+    position: absolute;
+    top: 140%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20rem;
+    padding: 2rem;
+    font-size: 1.4rem;
+    background-color:var(--color-primary) ;
+    color: var(--color-text);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    border-radius: 1rem;
+    font-weight: bold;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.info-dialog::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-top: -1.5rem;
+    margin-left: -1rem;
+    border-width: 1rem;
+    border-style: solid;
+    border-color: transparent  transparent var(--color-primary) transparent ;
+  }
+
+.info:hover .info-dialog {
+    visibility: visible;
+    opacity: 1;
+}
